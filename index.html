@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kizazi Academy — Karen, Nairobi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0c0a;--cream:#f5f0e8;--warm:#ede6d6;--gold:#b8860b;
+  --gold-light:#d4a520;--rust:#8b3a2a;--sage:#4a6741;--sky:#1a3a5c;
+  --white:#fefcf8;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(245,240,232,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,134,11,0.15);transition:all 0.3s ease}
+.nav-brand{font-family:var(--serif);font-size:1.35rem;font-weight:700;letter-spacing:0.02em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:0.6rem}
+.nav-brand span{width:28px;height:28px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:white;font-family:var(--sans);font-weight:500;letter-spacing:0.05em}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{font-size:0.8rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;opacity:0.7;transition:opacity 0.2s}
+.nav-links a:hover{opacity:1}
+.nav-cta{background:var(--ink);color:var(--cream)!important;opacity:1!important;padding:0.6rem 1.4rem;font-size:0.78rem!important;letter-spacing:0.1em!important;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--gold)!important}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{background:var(--ink);padding:8rem 4rem 5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.hero-left::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;opacity:0.25}
+.hero-eyebrow{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold-light);position:relative;z-index:1;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--gold-light)}
+.hero-h1{font-family:var(--serif);font-size:clamp(3rem,5vw,5rem);font-weight:900;line-height:1.05;color:var(--white);position:relative;z-index:1;margin-bottom:2rem;letter-spacing:-0.02em}
+.hero-h1 em{color:var(--gold-light);font-style:italic}
+.hero-tagline{font-size:1rem;font-weight:300;color:rgba(254,252,248,0.7);position:relative;z-index:1;max-width:28rem;line-height:1.8;margin-bottom:3rem}
+.hero-actions{display:flex;gap:1rem;position:relative;z-index:1;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:white;padding:0.9rem 2rem;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all 0.25s;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-secondary{border:1px solid rgba(254,252,248,0.35);color:var(--white);padding:0.9rem 2rem;font-size:0.82rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all 0.25s;background:transparent;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-right{background:var(--warm);padding:8rem 4rem 5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.hero-right::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold)}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem}
+.stat-num{font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:0.3rem;display:flex;align-items:baseline;gap:0.2rem}
+.stat-num sup{font-size:1.2rem;color:var(--gold)}
+.stat-label{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(13,12,10,0.5)}
+.hero-quote{border-left:2px solid var(--gold);padding-left:1.5rem;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink);line-height:1.7;opacity:0.8}
+.hero-quote cite{display:block;font-style:normal;font-family:var(--sans);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-top:0.75rem}
+.marquee-bar{background:var(--gold);padding:0.75rem 0;overflow:hidden;display:flex;white-space:nowrap}
+.marquee-track{display:flex;gap:3rem;animation:marquee 20s linear infinite;padding-right:3rem}
+.marquee-track span{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:white;font-weight:500;display:flex;align-items:center;gap:1rem}
+.marquee-track span::after{content:'✦';opacity:0.5;font-size:0.5rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.about{padding:7rem 6rem;display:grid;grid-template-columns:5fr 4fr;gap:6rem;align-items:start;background:var(--white)}
+.about-label{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
+.about-label::after{content:'';flex:1;height:1px;background:var(--gold);opacity:0.3}
+.about h2{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3rem);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:2rem;letter-spacing:-0.01em}
+.about h2 em{color:var(--rust);font-style:italic}
+.about p{font-size:1rem;line-height:1.9;color:rgba(13,12,10,0.72);margin-bottom:1.5rem}
+.pillars{display:flex;flex-direction:column;gap:2rem;margin-top:2rem}
+.pillar{background:var(--warm);padding:1.75rem;border-left:3px solid var(--gold);position:relative}
+.pillar-num{font-family:var(--serif);font-size:3rem;font-weight:900;color:var(--gold);opacity:0.2;position:absolute;top:0.5rem;right:1rem;line-height:1}
+.pillar h3{font-size:0.95rem;font-weight:500;color:var(--ink);margin-bottom:0.4rem;letter-spacing:0.02em}
+.pillar p{font-size:0.88rem;color:rgba(13,12,10,0.6);line-height:1.7;margin:0}
+.programmes{padding:7rem 6rem;background:var(--cream)}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem}
+.section-header h2{font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--ink);line-height:1.2;max-width:28rem}
+.section-header h2 em{color:var(--gold);font-style:italic}
+.view-all{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:0.1rem;white-space:nowrap;transition:opacity 0.2s}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(13,12,10,0.08)}
+.prog-card{background:var(--white);padding:2.5rem 2rem;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden}
+.prog-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.prog-card:hover{background:var(--ink)}
+.prog-card:hover::before{transform:scaleX(1)}
+.prog-card:hover .prog-name,.prog-card:hover .prog-age,.prog-card:hover .prog-desc{color:var(--cream)}
+.prog-card:hover .prog-icon{background:var(--gold);color:white}
+.prog-icon{width:3rem;height:3rem;background:var(--warm);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1.5rem;transition:all 0.3s}
+.prog-age{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;transition:color 0.3s}
+.prog-name{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:0.75rem;line-height:1.3;transition:color 0.3s}
+.prog-desc{font-size:0.88rem;color:rgba(13,12,10,0.6);line-height:1.75;transition:color 0.3s}
+.video-strip{height:50vh;min-height:400px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.video-strip-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,12,10,0.75) 0%,rgba(26,58,92,0.6) 100%)}
+.video-content{position:relative;z-index:1;text-align:center;max-width:50rem;padding:3rem}
+.video-content h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:900;color:white;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-0.02em}
+.video-content h2 em{color:var(--gold-light);font-style:italic}
+.play-btn{width:5rem;height:5rem;border-radius:50%;background:rgba(184,134,11,0.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:2rem auto 0;transition:all 0.25s}
+.play-btn:hover{background:var(--gold);transform:scale(1.08)}
+.life{padding:7rem 6rem;background:var(--white)}
+.life-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:3px;margin-top:3rem}
+.life-img{background:var(--warm);overflow:hidden;position:relative}
+.life-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.life-img:hover img{transform:scale(1.04)}
+.life-img.tall{grid-row:span 2}
+.life-img-label{position:absolute;bottom:1rem;left:1rem;background:rgba(13,12,10,0.7);color:white;backdrop-filter:blur(4px);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.4rem 0.8rem}
+.testimonials{padding:7rem 6rem;background:var(--ink);position:relative;overflow:hidden}
+.testimonials::before{content:'"';font-family:var(--serif);font-size:30rem;font-weight:900;color:rgba(184,134,11,0.06);position:absolute;top:-6rem;left:-2rem;line-height:1;pointer-events:none}
+.section-label{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;display:flex;align-items:center;gap:0.75rem}
+.section-label::after{content:'';width:3rem;height:1px;background:var(--gold);opacity:0.4}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;position:relative;z-index:1}
+.testi-card{padding:2.5rem;border:1px solid rgba(184,134,11,0.2)}
+.testi-card blockquote{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:rgba(254,252,248,0.85);line-height:1.8;margin-bottom:1.75rem}
+.testi-person{display:flex;align-items:center;gap:1rem}
+.testi-avatar{width:3rem;height:3rem;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:500;color:white;font-size:0.9rem;flex-shrink:0}
+.testi-name{font-size:0.88rem;font-weight:500;color:var(--white);margin-bottom:0.1rem}
+.testi-role{font-size:0.78rem;color:rgba(184,134,11,0.8);letter-spacing:0.05em}
+.enroll{padding:7rem 6rem;background:var(--warm);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.enroll-copy h2{font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:1.5rem}
+.enroll-copy h2 em{color:var(--gold);font-style:italic}
+.enroll-copy p{font-size:1rem;color:rgba(13,12,10,0.7);line-height:1.8;margin-bottom:2rem}
+.enroll-features{list-style:none;display:flex;flex-direction:column;gap:0.75rem}
+.enroll-features li{display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(13,12,10,0.75)}
+.enroll-features li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.enroll-form{background:var(--white);padding:3rem;border-top:4px solid var(--gold)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+.form-group label{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(13,12,10,0.55);font-weight:400}
+.form-group input,.form-group select{border:1px solid rgba(13,12,10,0.15);background:var(--cream);padding:0.85rem 1rem;font-size:0.92rem;font-family:var(--sans);color:var(--ink);outline:none;transition:border-color 0.2s;appearance:none}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group input::placeholder{color:rgba(13,12,10,0.3)}
+.form-submit{width:100%;background:var(--ink);color:var(--cream);border:none;padding:1.1rem;font-size:0.82rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;font-family:var(--sans);transition:background 0.25s;margin-top:0.5rem}
+.form-submit:hover{background:var(--gold)}
+.form-note{font-size:0.78rem;color:rgba(13,12,10,0.45);text-align:center;margin-top:1rem;line-height:1.6}
+footer{background:var(--ink);padding:4rem 6rem 3rem;color:rgba(254,252,248,0.6)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;border-bottom:1px solid rgba(184,134,11,0.15);padding-bottom:4rem}
+.footer-brand{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:1rem}
+.footer-about{font-size:0.88rem;line-height:1.8;max-width:22rem}
+.footer-col h4{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;font-weight:400}
+.footer-col a{display:block;font-size:0.88rem;color:rgba(254,252,248,0.55);text-decoration:none;margin-bottom:0.6rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.78rem;color:rgba(254,252,248,0.35)}
+.footer-badge{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,134,11,0.3);padding:0.4rem 1rem}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="nav-brand"><span>KA</span> Kizazi Academy</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#programmes">Programmes</a>
+    <a href="#life">Campus Life</a>
+    <a href="#enroll" class="nav-cta">Enquire Now</a>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Karen, Nairobi · Est. 2008</div>
+    <h1 class="hero-h1">Where Every Child <em>Finds Their Voice</em></h1>
+    <p class="hero-tagline">A Cambridge-curriculum school rooted in African excellence. We shape thinkers, leaders, and innovators for a rapidly changing world.</p>
+    <div class="hero-actions">
+      <a href="#enroll" class="btn-primary">Apply for 2026 →</a>
+      <a href="#life" class="btn-secondary">See Campus Life</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-num">98<sup>%</sup></div><div class="stat-label">University Placement</div></div>
+      <div class="stat-item"><div class="stat-num">1<sup>:</sup>14</div><div class="stat-label">Teacher-Pupil Ratio</div></div>
+      <div class="stat-item"><div class="stat-num">24<sup>+</sup></div><div class="stat-label">Extracurriculars</div></div>
+      <div class="stat-item"><div class="stat-num">16</div><div class="stat-label">Years of Excellence</div></div>
+    </div>
+    <blockquote class="hero-quote">"Kizazi didn't just teach our daughter — it gave her a foundation to question the world and the courage to change it."<cite>— Mrs. Wanjiku Kamau, Form 4 Parent</cite></blockquote>
+  </div>
+</section>
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Cambridge IGCSE</span><span>A-Level Excellence</span><span>Model United Nations</span><span>STEM Innovation Hub</span><span>Arts & Culture Programme</span><span>Sports Academy</span><span>Leadership Development</span><span>Global Exchange</span>
+    <span>Cambridge IGCSE</span><span>A-Level Excellence</span><span>Model United Nations</span><span>STEM Innovation Hub</span><span>Arts & Culture Programme</span><span>Sports Academy</span><span>Leadership Development</span><span>Global Exchange</span>
+  </div>
+</div>
+<section class="about" id="about">
+  <div>
+    <div class="about-label">Our Philosophy</div>
+    <h2>Education Rooted in <em>Heritage,</em> Reaching for the World</h2>
+    <p>At Kizazi — meaning "generation" in Swahili — we believe the most powerful education honours where a child comes from while preparing them for where they are going.</p>
+    <p>Our Karen campus is a sanctuary of intentional learning: small classes, world-class facilities, and educators who understand that a child's confidence is built one discovery at a time.</p>
+    <a href="#enroll" class="btn-primary" style="display:inline-flex;margin-top:1rem">Schedule a Visit →</a>
+  </div>
+  <div class="pillars">
+    <div class="pillar"><div class="pillar-num">01</div><h3>Academic Rigour</h3><p>Cambridge International curriculum from Year 1 through A-Levels, with consistently exceptional results.</p></div>
+    <div class="pillar"><div class="pillar-num">02</div><h3>African Identity</h3><p>Swahili, local history, and African literature woven throughout — children who know their roots grow taller.</p></div>
+    <div class="pillar"><div class="pillar-num">03</div><h3>Whole-Child Development</h3><p>Arts, athletics, debate, and community service — because character cannot be examined, only cultivated.</p></div>
+  </div>
+</section>
+<section class="programmes" id="programmes">
+  <div class="section-header">
+    <h2>Learning Journeys From <em>Early Years</em> to A-Level</h2>
+    <a href="#" class="view-all">All Programmes</a>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-card"><div class="prog-icon">🌱</div><div class="prog-age">Ages 3 – 6</div><div class="prog-name">Early Years Foundation</div><p class="prog-desc">Play-based discovery that builds curiosity, language, and social intelligence — the roots of all future learning.</p></div>
+    <div class="prog-card"><div class="prog-icon">📚</div><div class="prog-age">Years 1 – 6</div><div class="prog-name">Primary School</div><p class="prog-desc">Cambridge Primary curriculum with rich arts, Swahili, and STEM integration across every subject.</p></div>
+    <div class="prog-card"><div class="prog-icon">🔬</div><div class="prog-age">Years 7 – 9</div><div class="prog-name">Lower Secondary</div><p class="prog-desc">Deepening academic foundations as students explore identity, critical thinking, and personal strengths.</p></div>
+    <div class="prog-card"><div class="prog-icon">🏆</div><div class="prog-age">Years 10 – 11</div><div class="prog-name">IGCSE Programme</div><p class="prog-desc">Cambridge IGCSE with expert guidance, focused preparation, and consistent distinction-level outcomes.</p></div>
+    <div class="prog-card"><div class="prog-icon">🎓</div><div class="prog-age">Years 12 – 13</div><div class="prog-name">A-Level Sixth Form</div><p class="prog-desc">University preparation at the highest level — with mentorship from alumni at Oxford, MIT, and beyond.</p></div>
+    <div class="prog-card"><div class="prog-icon">🌍</div><div class="prog-age">All Years</div><div class="prog-name">Enrichment & Co-curricular</div><p class="prog-desc">Debate, robotics, drama, athletics, MUN, photography — because what you love shapes who you become.</p></div>
+  </div>
+</section>
+<div class="video-strip">
+  <img class="video-strip-img" src="https://images.pexels.com/photos/8471939/pexels-photo-8471939.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Students">
+  <div class="video-overlay"></div>
+  <div class="video-content">
+    <h2>See <em>Kizazi</em> in Motion</h2>
+    <p style="color:rgba(255,255,255,0.7);margin-top:0.75rem">A campus built for curiosity. A community built for life.</p>
+    <button class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></button>
+  </div>
+</div>
+<section class="life" id="life">
+  <div class="section-header">
+    <h2>A Campus That <em>Breathes</em> With Its Students</h2>
+    <a href="#" class="view-all">Gallery</a>
+  </div>
+  <div class="life-grid">
+    <div class="life-img tall"><img src="https://images.pexels.com/photos/2982449/pexels-photo-2982449.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Library"><div class="life-img-label">Resource Centre</div></div>
+    <div class="life-img"><img src="https://images.pexels.com/photos/8926507/pexels-photo-8926507.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Labs"><div class="life-img-label">Science Labs</div></div>
+    <div class="life-img"><img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Teams"><div class="life-img-label">Collaboration Spaces</div></div>
+    <div class="life-img"><img src="https://images.pexels.com/photos/3228786/pexels-photo-3228786.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sports"><div class="life-img-label">Sports Grounds</div></div>
+    <div class="life-img"><img src="https://images.pexels.com/photos/7516347/pexels-photo-7516347.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Arts"><div class="life-img-label">Arts Studio</div></div>
+  </div>
+</section>
+<section class="testimonials">
+  <div class="section-label">Parent & Alumni Voices</div>
+  <div class="testi-grid">
+    <div class="testi-card"><blockquote>"Three children through Kizazi. Each one found something different here — and each one left knowing exactly who they are. There is no higher praise I can give a school."</blockquote><div class="testi-person"><div class="testi-avatar">JM</div><div><div class="testi-name">Joseph Mwangi</div><div class="testi-role">Parent · Runda</div></div></div></div>
+    <div class="testi-card"><blockquote>"I'm now studying Medicine at UCT. Kizazi gave me the academic foundation, but more importantly — the belief that I deserved to be in every room I enter."</blockquote><div class="testi-person"><div class="testi-avatar">AN</div><div><div class="testi-name">Amina Njoroge</div><div class="testi-role">Alumni · Class of 2021</div></div></div></div>
+    <div class="testi-card"><blockquote>"The teachers here see children as whole people — their struggles, their gifts, their potential. My son went from struggling with reading to winning the national debate championship."</blockquote><div class="testi-person"><div class="testi-avatar">GK</div><div><div class="testi-name">Grace Kimani</div><div class="testi-role">Parent · Lavington</div></div></div></div>
+    <div class="testi-card"><blockquote>"I think about Kizazi every day. Not for the grades — but for the way it taught me to think, to question, and to lead with integrity."</blockquote><div class="testi-person"><div class="testi-avatar">DM</div><div><div class="testi-name">David Mutu</div><div class="testi-role">Alumni · London Business School</div></div></div></div>
+  </div>
+</section>
+<section class="enroll" id="enroll">
+  <div class="enroll-copy">
+    <div class="about-label" style="margin-bottom:1.5rem">Admissions 2026</div>
+    <h2>Begin Your Child's <em>Kizazi Journey</em></h2>
+    <p>We welcome applications for all year groups. Our admissions team will guide your family through every step.</p>
+    <ul class="enroll-features">
+      <li>Rolling admissions — no fixed deadlines for most year groups</li>
+      <li>Scholarship opportunities for exceptional candidates</li>
+      <li>Campus tours every Tuesday and Friday morning</li>
+      <li>Sibling priority admission policy</li>
+      <li>Flexible payment plans available</li>
+    </ul>
+  </div>
+  <div class="enroll-form">
+    <div class="form-row">
+      <div class="form-group"><label>Parent/Guardian Name</label><input type="text" id="fName" placeholder="Full name"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" id="fPhone" placeholder="+254 7XX XXX XXX"></div>
+    </div>
+    <div class="form-group"><label>Email Address</label><input type="email" id="fEmail" placeholder="your@email.com"></div>
+    <div class="form-row">
+      <div class="form-group"><label>Child's Age</label><input type="number" placeholder="e.g. 8" min="3" max="19"></div>
+      <div class="form-group"><label>Year Group</label><select id="fYear"><option value="">Select year group</option><option>Early Years (Age 3–5)</option><option>Year 1–3</option><option>Year 4–6</option><option>Year 7–9</option><option>Year 10–11 IGCSE</option><option>Sixth Form A-Level</option></select></div>
+    </div>
+    <button class="form-submit" id="fBtn" onclick="submitForm()">Submit Enquiry</button>
+    <div id="fStatus" style="display:none;margin-top:.75rem;padding:.85rem 1rem;font-size:.82rem;line-height:1.5"></div>
+    <a href="#" id="fWa" target="_blank" style="display:none;margin-top:.75rem;background:#25d366;color:white;padding:1rem;font-size:.82rem;font-weight:500;text-align:center;text-decoration:none;display:none"></a>
+    <p class="form-note">📍 Karen Road, off Ngong Road · Mon – Fri, 7:30am – 5:00pm</p>
+  </div>
+</section>
+<footer>
+  <div class="footer-top">
+    <div><div class="footer-brand">Kizazi Academy</div><p class="footer-about">Karen, Nairobi's premier independent school. Cambridge curriculum, African soul, global ambition. Shaping the next generation of African leaders since 2008.</p></div>
+    <div class="footer-col"><h4>School</h4><a href="#">About Kizazi</a><a href="#">Our Faculty</a><a href="#">Academic Results</a><a href="#">Facilities Tour</a></div>
+    <div class="footer-col"><h4>Programmes</h4><a href="#">Early Years</a><a href="#">Primary</a><a href="#">IGCSE</a><a href="#">A-Levels</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="#">Karen Road, Nairobi</a><a href="tel:+254700000000">+254 700 000 000</a><a href="#">admissions@kizazi.ac.ke</a><a href="#">WhatsApp Us</a></div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2025 Kizazi Academy Ltd.</span><span class="footer-badge">Cambridge International School</span></div>
+</footer>
+
+<script>
+async function submitForm(){
+  var n=document.getElementById('fName')?.value.trim(),p=document.getElementById('fPhone')?.value.trim(),e=document.getElementById('fEmail')?.value.trim(),y=document.getElementById('fYear')?.value;
+  if(!n||!p){showSt('Please enter parent name and phone number.','#c0392b','#fff0ee');return;}
+  var btn=document.getElementById('fBtn');btn.disabled=true;btn.textContent='Submitting...';
+  try{var res=await fetch('/api/enquire',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,phone:p,email:e||'',service:y||'School Enquiry',siteName:'Kizazi Academy',whatsappNumber:'254700000000'})});
+  var d=res.ok?await res.json():{success:true,whatsappUrl:'https://wa.me/254700000000'};
+  showSt('✅ Enquiry received! Our registrar will call you within 24 hours.','#0d6b3a','#e8f5ee');
+  if(d.whatsappUrl){var wa=document.getElementById('fWa');wa.href=d.whatsappUrl;wa.textContent='💬 Continue on WhatsApp';wa.style.display='block';}
+  btn.textContent='Submitted ✓';}
+  catch{btn.disabled=false;btn.textContent='Submit Enquiry';showSt('Failed. Please WhatsApp +254 700 000 000.','#c0392b','#fff0ee');}
+}
+function showSt(m,c,bg){var e=document.getElementById('fStatus');e.textContent=m;e.style.background=bg;e.style.color=c;e.style.border='1px solid '+c;e.style.display='block';}
+</script>
+</body>
+</html>
